@@ -20,11 +20,10 @@ for n = 1 : runs
     figure(3)
     hold on
     plot(TIME, G, 'color', colours(n, :))
-    cellData(2:length(TIME)+1, 2*n-1) = num2cell(TIME(:));
-    cellData(2:length(TIME)+1, 2*n) = num2cell(G(:));
+    cellData(2:end, 2*n-1) = num2cell(TIME(:));
+    cellData(2:end, 2*n) = num2cell(G(:));
 end
-addpath('~/Dropbox/Code/odd_scripts/')
-cell2CSV(cellData, 'posAutoData.csv');
+add
 function dGdt = diffeqn(~, G)
     dGdt = BASAL_TRANS + ((MAX_G * (G ^ HILL)) / (CONC_ACT + ...
            (G ^ HILL))) - G * DEGRAD;
